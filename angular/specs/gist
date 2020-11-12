@@ -1,0 +1,9 @@
+  it('should have launched method', () => {
+    spyOn(component, 'methodName');
+    component.myVar = false;
+    fixture.detectChanges();
+
+    component.ngAfterViewInit();
+
+    expect(component.methodName).toHaveBeenCalled();
+  });
