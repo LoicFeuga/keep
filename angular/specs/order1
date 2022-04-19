@@ -36,4 +36,15 @@ describe('EDocumentService', () => {
     //url bien récupéré
     const r = httpTestingController.expectOne('/');
   }));
+  
+  //10
+  it('get synthese test url', fakeAsync(() => {
+    service.download('aa').subscribe(v => {
+    });
+
+    //11
+    const r = httpTestingController.expectOne('/edocs/download/');
+    //12
+    expect(r.request.body).toEqual({key: 'aa'});
+  }));
 });
