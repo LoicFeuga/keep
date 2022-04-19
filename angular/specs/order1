@@ -1,0 +1,39 @@
+import {fakeAsync, TestBed} from '@angular/core/testing';
+
+import {EDocumentService} from './e-document.service';
+import {DocumentFiltre} from '../../models/document-filtre.model';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+
+describe('EDocumentService', () => {
+  let service: EDocumentService;
+  //1
+  let httpTestingController: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
+    service = TestBed.inject(EDocumentService);
+    //2
+    httpTestingController = TestBed.inject(HttpTestingController);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
+  it('get Edoc test filtre', fakeAsync(() => {
+    const f: DocumentFiltre = {
+      prioritaire: false,
+      releve: true,
+    };
+
+    //3 appel fonction service
+    service.getEDocument(f, 1, false).subscribe(v => {
+      console.log(v);
+    });
+
+    //url bien récupéré
+    const r = httpTestingController.expectOne('/');
+  }));
+});
