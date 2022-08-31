@@ -1,0 +1,11 @@
+// Import jwt for API's endpoints authentication
+const jwt = require("jsonwebtoken");
+
+var token = jwt.sign({foo: 'bar'}, 'mykey', {expiresIn: "20s"});
+console.log(token);
+
+var aaa = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJpYXQiOjE2NjE5NTEwNTIsImV4cCI6MTY2MTk1MTA3Mn0.Ap4A8yCa_IYLnV1HFq3awC-Z1gBsvcKHmI2oIpsSD4Q";
+
+var b = jwt.verify(aaa, "mykey");
+
+console.log(b);
