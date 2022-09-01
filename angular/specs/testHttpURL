@@ -1,0 +1,6 @@
+
+  it('test call get forex swap', () => {
+    service.getTauxInterbancaire().subscribe(_ => {
+    });
+    httpTestingController.expectOne('http://localhost:3000/taux/interbancaire');
+  });
