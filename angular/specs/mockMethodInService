@@ -1,0 +1,23 @@
+ let mockForexService: any;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
+    service = TestBed.inject(StoreService);
+
+
+    mockForexService = TestBed.inject(HttpService);
+    spyOn(mockForexService, 'getLastUpdatedDate').and.returnValue(of({updateAt: new Date(0)}));
+  });
+
+
+
+  it('test getLastUpdatedDate', async () => {
+    return new Promise<void>(async (resolve) => {
+      const a = await service.getLastUpdatedDate();
+      var date = new Date(0);
+      expect(a).toEqual(date);
+      resolve();
+    });
+  });
