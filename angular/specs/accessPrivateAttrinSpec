@@ -1,0 +1,1 @@
+    (service as any).tauxCourbe = [{taux: 'E1P', favoris: true}]
